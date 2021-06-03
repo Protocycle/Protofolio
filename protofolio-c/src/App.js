@@ -1,7 +1,7 @@
 import './App.css';
 import { Home } from './components/main/Home';
 import { PageWrapper } from './components/PageWrapper';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { HashRouter as Router, Route, Switch } from 'react-router-dom';
 
 function App() {
   return (
