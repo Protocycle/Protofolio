@@ -1,160 +1,220 @@
 import React from 'react';
-export const Resume = () => {
+export const Resume = (props) => {
+  const contact = props.resume.contact;
+  const education = props.resume.education;
+  const skills = props.resume.skills;
+  const headline = props.resume.headline;
+
   return (
     <div className="box has-background-info-light px-6 container is-max-desktop">
       <br />
-      <section title="Contact Info">
-        <div className="has-text-centered">
-          <div><span className="is-size-2">Nassir Dajer</span></div>
-          <div className="columns is-centered">
-            <span className="icon-text column is-narrow" title="E-mail">
-              <span className="icon is-medium">
-                <i className="fas fa-envelope fa-lg"></i>
+
+      {(contact && education && skills && headline) &&
+        <main>
+          <section title="Contact Info">
+            <div className="has-text-centered">
+              <div>
+                <label className="is-size-2">{contact.name}</label>
+              </div>
+
+              <div className="columns is-centered">
+                <span className="icon-text column is-narrow" title="E-mail">
+                  <span className="icon is-medium">
+                    <i className="fas fa-envelope fa-lg"></i>
+                  </span>
+                  <span>{contact.email}</span>
+                </span>
+
+                <span className="icon-text column is-narrow" title="Location">
+                  <span className="icon is-medium">
+                    <i className="fas fa-map-marker-alt fa-lg"></i>
+                  </span>
+                  <span>{contact.location}</span>
+                </span>
+
+                <span className="icon-text column is-narrow" title="Phone">
+                  <span className="icon is-medium">
+                    <i className="fas fa-mobile-alt fa-lg"></i>
+                  </span>
+                  <span>{contact.phone}</span>
+                </span>
+
+                <span className="icon-text column is-narrow" title="Languages">
+                  <span className="icon is-medium">
+                    <i className="fas fa-globe-americas fa-lg"></i>
+                  </span>
+                  <span>{contact.languages.join(" - ")}</span>
+                </span>
+
+                <span className="icon-text column is-narrow" title="GitHub">
+                  <a className="links" target="_blank" href={contact.links.github}>
+                    <span className="icon is-medium">
+                      <i className="fab fa-github fa-lg"></i>
+                    </span>
+                    <span>GitHub</span>
+                  </a>
+                </span>
+              </div>
+            </div>
+          </section>
+
+
+          <br />
+
+          <section title="Summary">
+            <div className="has-text-centered">
+              <span className="icon-text">
+                <span className="icon">
+                  <i className="fas fa-user-tie fa-lg"></i>
+                </span>
+                <label className="is-size-4">Summary</label>
               </span>
-              <span>nassirdajer@gmail.com</span>
-            </span>
+            </div>
+            <p className="pt-3">
+              {headline}
+            </p>
+          </section>
 
-            <span className="icon-text column is-narrow" title="Location">
-              <span className="icon is-medium">
-                <i class="fas fa-map-marker-alt fa-lg"></i>
+          <br />
+
+          <section title="Education">
+            <div className="has-text-centered">
+              <span className="icon-text">
+                <span className="icon">
+                  <i className="fas fa-user-graduate fa-lg"></i>
+                </span>
+                <label className="is-size-4">Education</label>
               </span>
-              <span>Austin, TX 78717</span>
-            </span>
+            </div>
+            {education.schools.map(school => (
+              <div title={school.institution} key={school.institution} className="pt-3">
+                <label>
+                  <b>{school.institution} | {school.date} | <i>{school.location}</i></b>
+                </label>
 
-            <span className="icon-text column is-narrow" title="Phone">
-              <span className="icon is-medium">
-                <i className="fas fa-phone fa-lg"></i>
-              </span>
-              <span>786-474-5516</span>
-            </span>
+                <ul className="px-6">
+                  <li className="py-1">
+                    {school.degree}
+                  </li>
+                  <li className="py-1">
+                    <i>{school.distinction}</i> - GPA: {school.gpa}
+                  </li>
+                  <li className="py-1">
+                    <b>Relevant Coursework</b>
+                    <ul className="px-6">
+                      {school.coursework.map(course => (
+                        <li className="py-1" key={course}>
+                          {course}
+                        </li>
+                      ))}
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+            ))}
 
-            <span className="icon-text column is-narrow" title="Languages">
-              <span className="icon is-medium">
-                <i className="fas fa-globe-americas fa-lg"></i>
-              </span>
-              <span>Spanish &amp; English</span>
-            </span>
-          </div>
-        </div>
-      </section>
+            {education.bootcamps.map(bootcamp => (
+              <div title={bootcamp.institution} key={bootcamp.institution} className="pt-3">
+              <label>
+                <b>{bootcamp.institution} | {bootcamp.date} | <i>{bootcamp.location}</i></b>
+              </label>
 
-      <br />
-
-      <section title="Summary">
-        <div className="has-text-centered">
-          <span className="icon-text">
-            <span className="icon">
-              <i class="fas fa-user-tie"></i>
-            </span>
-            <span className="is-size-4">Summary</span>
-          </span>
-        </div>
-        <p className="pt-3">
-          B.S. in Information Technology graduate with a focus on software development.
-          Extremely fast learner.
-          Seeking to utilize my current knowledge, as well as expand it, to thrive as a software engineer.
-        </p>
-      </section>
-
-      <br />
-      <br />
-
-      <section title="Education">
-        <div className="has-text-centered">
-          <span className="icon-text">
-            <span className="icon">
-              <i className="fa fa-university"></i>
-            </span>
-            <span className="is-size-4">Education</span>
-          </span>
-        </div>
-        <div title="Florida International University" className="pt-3">
-          <span><strong>Florida International University | Jan 2018 &mdash; Dec 2019 | <em>Miami, Florida</em></strong></span>
-          <ul className="px-6">
-            <li className="py-1">
-              B.S. in Information Technology
-            </li>
-            <li className="py-1">
-              <em>Summa Cum Laude</em> - GPA 3.9/4.0
-            </li>
-            <li className="py-1">
-              <strong>Relevant Coursework</strong>
               <ul className="px-6">
                 <li className="py-1">
-                  Intermediate Java
+                  {bootcamp.degree}
                 </li>
+
                 <li className="py-1">
-                  Website Construction and Management (HTML, CSS, JavaScript, SQL)
+                  GPA: {bootcamp.gpa}
                 </li>
+
                 <li className="py-1">
-                  Component-Based Software Development (Python)
-                </li>
-                <li className="py-1">
-                  UNIX System Admin (CentOS 7)
+                  <b>Relevant Coursework</b>
+                  <ul className="px-6">
+                    {bootcamp.coursework.map(course => (
+                      <li className="py-1" key={course}>
+                        {course}
+                      </li>
+                    ))}
+                  </ul>
                 </li>
               </ul>
-            </li>
-          </ul>
-        </div>
-      </section>
+            </div>
+            ))}
+          </section>
 
-      <br />
+          <br />
 
-      <section title="Computer Skills" className="pt-3">
-        <div className="has-text-centered">
-          <span className="icon-text">
-            <span className="icon">
-              <i className="fas fa-code"></i>
-            </span>
-            <span className="is-size-4">Computer Skills</span>
-          </span>
-        </div>
-        <div title="Languages" className="pt-3">
-          <span><strong>Languages</strong></span>
-          <ul className="px-6">
-            <li className="py-1">
-              Python - JavaScript - Java
-            </li>
-            <li className="py-1">
-              HTML - CSS
-            </li>
-            <li className="py-1">
-              JSON - SQL
-            </li>
-          </ul>
-        </div>
+          <section title="Computer Skills">
+            <div className="has-text-centered">
+              <span className="icon-text">
+                <span className="icon">
+                  <i className="fas fa-code fa-lg"></i>
+                </span>
+                <label className="is-size-4">Computer Skills</label>
+              </span>
+            </div>
+            <div className="columns pt-3 has-text-centered">
+              <div title="Languages" className="column">
+                <label>
+                  <b>Languages</b>
+                </label>
 
-        <div title="Frameworks" className="pt-3">
-          <span><strong>Frameworks</strong></span>
-          <ul className="px-6">
-            <li className="py-1">
-              ReactJS
-            </li>
-            <li className="py-1">
-              ExpressJS
-            </li>
-          </ul>
-        </div>
+                <ul>
+                  <li className="py-1">
+                    {skills.technical.languages.programming.join(" - ")}
+                  </li>
 
-        <div title="Software" className="pt-3">
-          <span><strong>Software</strong></span>
-          <ul className="px-6">
-            <li className="py-1">
-              Databases: MySQL
-            </li>
-            <li className="py-1">
-              Platforms: Windows 7/10 and Ubuntu
-            </li>
-            <li className="py-1">
-              IDEs: Visual Studio Code, Visual Studio
-            </li>
-          </ul>
-        </div>
-      </section>
+                  <li className="py-1">
+                    {skills.technical.languages.web.join(" - ")}
+                  </li>
 
-      <br />
-      <br />
+                  <li className="py-1">
+                    {skills.technical.languages.data.join(" - ")}
+                  </li>
+                </ul>
+              </div>
 
+              <div title="Frameworks" className="column">
+                <label>
+                  <b>Frameworks/Libraries/Platforms</b>
+                </label>
+
+                <ul>
+                  {skills.technical.libraries.map(flp => (
+                    <li className="py-1" key={flp}>
+                      {flp}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div title="Software" className="column">
+                <label>
+                  <b>Software</b>
+                </label>
+
+                <ul>
+                  <li className="py-1">
+                    {skills.technical.softwares.databases.join(" - ")}
+                  </li>
+
+                  <li className="py-1">
+                    {skills.technical.softwares.platforms.join(" - ")}
+                  </li>
+
+                  <li className="py-1">
+                    {skills.technical.softwares.ides.join(" - ")}
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </section>
+
+          <br />
+          <br />
+        </main>
+      }
     </div>
   )
 }

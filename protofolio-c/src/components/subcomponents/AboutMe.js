@@ -1,32 +1,58 @@
 import React from 'react';
 import me from '../../assets/images/me.jpg'
 
-export const AboutMe = () => {
+export const AboutMe = (props) => {
+  const intro = [...props.about.summary.intro].sort((line1, line2) => line1[0] > line2[0]);
+  const content = [...props.about.summary.content].sort((line1, line2) => line1[0] > line2[0]);
+  const conclusion = [...props.about.summary.conclusion].sort((line1, line2) => line1[0] > line2[0]);
+  // const person = {
+  //   name: props.about.name,
+  //   dob: props.about.dob,
+  //   pob: props.about.pob,
+  //   nationality: props.about.nationality
+  // }
+
   return (
     <div className="box has-background-info-light">
       <div className="columns">
-        <div className="column is-two-fifths">
-          <img src={me} />
-        </div>
-        <div className="column has-text-justified">
-          Hello and thanks for visiting! My name is Nassir Dajer, I am a {age()}-year-old Entry-Level Software Developer.
-          I was born and finished H.S. in the Dominican Republic, then I went to Florida International University where I obtained my B.S. in Information Technology on December 2019.<br/><br/>
 
-          You might wonder why I chose to study IT but presented myself as a Software Developer... well... I <strong>DID</strong> want to become an IT <em>at first</em>,
-          but halfway through my career I took many programming courses as part of the curriculum and ended up loving coding more than being an IT! Silly, right?<br/>
-          So I started to focus more on those courses but... they were lacking.
-          As such, to compensate for that, I began taking courses on sites like Udemy (where I learned React and Express),
-          and have been using HackerRank and LeetCode to improve my logical thinking!<br/><br />
-          
-          I want to become a great developer and learn as much as I can =)
+        <div className="column is-two-fifths">
+          <img style={{ borderRadius: "6px" }} src={me} />
+        </div>
+
+        <div className="column has-text-justified">
+          {(intro && content && conclusion) &&
+            <div className="about-container">
+              <div className="about-intro">
+                <p>
+                  {intro.map((p) => (
+                    <span key={p[0]}>{p[1]} <br /></span>
+                  ))}
+                </p>
+              </div>
+
+              <br />
+              
+              <div className="about-content">
+                <p>
+                  {content.map((p) => (
+                    <span key={p[0]}>{p[1]} <br /><br /></span>
+                  ))}
+                </p>
+
+              </div>
+
+              <div className="about-conclusion">
+                <p>
+                  {conclusion.map((p) => (
+                    <span key={p[0]}>{p[1]} <br /><br /></span>
+                  ))}
+                </p>
+              </div>
+            </div>
+          }
         </div>
       </div>
     </div>
   )
-}
-
-const age = () => {
-  const ageDifMs = Date.now() - new Date("01/01/1996").getTime();
-  const ageDate = new Date(ageDifMs);
-  return Math.abs(ageDate.getUTCFullYear() - 1970);
 }

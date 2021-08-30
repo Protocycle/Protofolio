@@ -18,6 +18,7 @@ body {
   animation-duration: 0.5s;
 }
 
+/* START PokeRPS */
 .type-normal, .type-normal *{color: #A8A878}
 .type-fire, .type-fire *{color: #F08030}
 .type-water, .type-water *{color: #82a5f5}
@@ -27,12 +28,25 @@ body {
 .type-poison, .type-poison *{color: #833183}
 .type-ground, .type-ground *{color: #E0C068}
 .type-flying, .type-flying *{color: #A890F0}
-.type-psychic, .type-psychic *{color: #f589a9}
+.type-psychic, .type-psychic *{color: #fc9db9}
 .type-bug, .type-bug *{color: #A8B820}
 .type-rock, .type-rock *{color: #B8A038}
-.type-ghost, .type-ghost *{color: #705898}
+.type-ghost, .type-ghost *{color: #664a92}
 .type-dragon, .type-dragon *{color: #692ef1}
 .type-dark, .type-dark *{color: #705848}
 .type-steel, .type-steel *{color: #c7c7ce}
 .type-fairy, .type-fairy *{color: #e4aab6}
 .type-electric, .type-electric *{color: #F8D030}
+/* END PokeRPS */
+
+.links:link {
+  color: #a16a44;
+}
+
+.links {
+  color: #269999;
+}
+
+.links:hover {
+  color: #8000ff;
+}
