@@ -39,7 +39,7 @@ export const PokeRPS = () => {
       return;
     }
     
-    const data = (await axios.get(`http://localhost:9000/api/pokerps/get-pokemon`, {params: {id1, id2}})).data;
+    const data = (await axios.get(`/api/pokerps/get-pokemon`, {params: {id1, id2}})).data;
     return data;
   }
 

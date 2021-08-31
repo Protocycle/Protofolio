@@ -1,20 +1,29 @@
+if (process.env.NODE_ENV !== "production") {
+	require("dotenv").config();
+}
+
 const express = require('express');
 const { apiRouter } = require('./api');
 const cors = require('cors');
 const mongoose = require('mongoose');
 
 const server = express();
-const port = 9000;
+const port = process.env.PORT;
 const path = require('path');
-const db = "protofolio";
+const db = process.env.PORTFOLIODB;
 
-// mongoose connection
-mongoose.connect(`mongodb://localhost:27017/${db}`, {useNewUrlParser: true, useUnifiedTopology: true})
-.then(e => {
-  console.log(`Connected to database '${db}'`);
-}).catch(err => {
-  console.log(`Could not connect to database '${db}'`);
-});
+
+// mongodb connection
+const mongoConnect = () => {
+	mongoose.connect(db, {useNewUrlParser: true, useUnifiedTopology: true})
+	.then(e => {
+  	console.log(`Database connection was successful`);
+	}).catch(err => {
+  	console.log(`Could not connect to the database - Retrying in 10 seconds`);
+		setTimeout(mongoConnect, 10000);
+	});
+}
+mongoConnect();
 
 // request parsers
 server.use(express.urlencoded({
@@ -38,12 +47,10 @@ server.use('/api', apiRouter);
 
 
 
-
 server.get('/', (req, res) => {
     // update this path to match how you set up express to serve static and where your build is output to
     res.send(res.sendFile(path.join(__dirname, '..', 'protofolio-c', 'build', 'index.html')));
   });
 
 
-
-server.listen(port, () => console.log(`Express running at http://localhost:${port}`));
+server.listen(port, () => console.log(`Server listening on port ${port}`));

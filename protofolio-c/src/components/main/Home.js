@@ -5,7 +5,7 @@ import { AboutMe } from '../subcomponents/AboutMe';
 import { Apps } from '../subcomponents/Apps';
 import { Resume } from '../subcomponents/Resume';
 
-const baseUrl = "http://localhost:9000";
+//const baseUrl = "http://localhost:9000";
 
 export const Home = () => {
   const sections = {
@@ -18,12 +18,12 @@ export const Home = () => {
   const [resume, setResume] = useState();
 
   const loadAbout = async () => {
-    const aboutData = (await axios.get(`${baseUrl}/api/bio/about/1`)).data;
+    const aboutData = (await axios.get(`/api/bio/about/1`)).data;
     setAbout(aboutData);
   };
 
   const loadResume = async () => {
-    const resumeData = (await axios.get(`${baseUrl}/api/bio/resume/1`)).data;
+    const resumeData = (await axios.get(`/api/bio/resume/1`)).data;
     setResume(resumeData);
   }
 

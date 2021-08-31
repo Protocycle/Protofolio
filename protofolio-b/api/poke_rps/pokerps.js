@@ -77,8 +77,6 @@ pokeRouter.get('/get-pokemon', async (req, res) => {
         winner: getWinner(poke1["types"][0]["type"]["name"], poke2["types"][0]["type"]["name"])
     }
 
-    console.log(resultSet);
-    
     res.json(resultSet);
 });
 
