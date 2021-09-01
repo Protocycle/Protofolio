@@ -17,12 +17,12 @@ export const AboutMe = (props) => {
       <div className="columns">
 
         {profile &&
-          <div className="column is-two-fifths">
+          <div className="column">
             <img style={{ borderRadius: "6px" }} src={profile} />
           </div>
         }
 
-        <div className="column has-text-justified">
+        <div className="column has-text-justified is-three-fifths">
           {(intro && content && conclusion) &&
             <div className="about-container">
               <div className="about-intro">
