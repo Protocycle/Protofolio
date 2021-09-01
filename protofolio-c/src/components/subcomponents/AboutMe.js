@@ -1,10 +1,10 @@
 import React from 'react';
-import me from '../../assets/images/me.jpg'
 
 export const AboutMe = (props) => {
   const intro = [...props.about.summary.intro].sort((line1, line2) => line1[0] > line2[0]);
   const content = [...props.about.summary.content].sort((line1, line2) => line1[0] > line2[0]);
   const conclusion = [...props.about.summary.conclusion].sort((line1, line2) => line1[0] > line2[0]);
+  const profile = props.about.pp;
   // const person = {
   //   name: props.about.name,
   //   dob: props.about.dob,
@@ -16,9 +16,11 @@ export const AboutMe = (props) => {
     <div className="box has-background-info-light">
       <div className="columns">
 
-        <div className="column is-two-fifths">
-          <img style={{ borderRadius: "6px" }} src={me} />
-        </div>
+        {profile &&
+          <div className="column is-two-fifths">
+            <img style={{ borderRadius: "6px" }} src={profile} />
+          </div>
+        }
 
         <div className="column has-text-justified">
           {(intro && content && conclusion) &&
@@ -32,7 +34,7 @@ export const AboutMe = (props) => {
               </div>
 
               <br />
-              
+
               <div className="about-content">
                 <p>
                   {content.map((p) => (

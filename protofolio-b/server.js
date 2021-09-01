@@ -40,6 +40,7 @@ server.use(cors(corsOptions));
 
 // react serve
 server.use(express.static("../protofolio-c/build"));
+server.use("/assets", express.static(__dirname + "/assets"))
 
 // APIs
 server.use('/api', apiRouter);

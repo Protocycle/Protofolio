@@ -15,6 +15,10 @@ const resumeSchema = new Schema({
         schools: Array,
         bootcamps: Array
     },
+    jobs: {
+        freelance: Array,
+        employee: Array
+    },
     skills: {
         technical: {
             languages: {

@@ -14,6 +14,10 @@ body {
   background-color: #9BAFB8;
 }
 
+.tabs a {
+  color: white;
+}
+
 .progress:indeterminate {
   animation-duration: 0.5s;
 }

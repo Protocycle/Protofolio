@@ -13,8 +13,9 @@
   "description": "portfolio backend",
   "main": "server.js",
   "scripts": {
-    "test": "NODE_ENV='development'; nodemon server.js;",
-		"start": "NODE_ENV='production'; node server.js;"  
+    "test": "nodemon server.js;",
+		"start-linux": "NODE_ENV='production'; node server.js;",
+    "start-windows": "set NODE_ENV='production' && node server.js"
 	},
   "author": "Nassir Dajer",
   "license": "ISC"

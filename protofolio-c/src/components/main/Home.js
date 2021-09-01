@@ -42,6 +42,7 @@ export const Home = () => {
           <li className={tabSelected === sections.apps ? "is-active" : ""}><a onClick={() => tabSelection(sections.apps)}>Apps</a></li>
         </ul>
       </div>
+      
       <div className="tab-content box has-text-black">
         {
           tabSelected === sections.about
