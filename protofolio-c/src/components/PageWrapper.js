@@ -1,8 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../assets/images/logo.png';
 
 export const PageWrapper = (props) => {
+	const [isActive, setActive] = useState("");
+	
+	const activate = () => {
+		if (isActive)
+			setActive("");
+		else setActive("is-active");
+	}
   return (
     <div>
       {/* <nav className="navbar">PageWrapper: create navbar here</nav> */}
@@ -12,24 +19,24 @@ export const PageWrapper = (props) => {
             <img src={logo}/>
           </Link>
 
-          <a role="button" className="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarMain">
+          <a role="button" onClick={activate} className={`navbar-burger ${isActive}`} aria-label="menu" aria-expanded="false" data-target="navbarMain">
             <span aria-hidden="true"></span>
             <span aria-hidden="true"></span>
             <span aria-hidden="true"></span>
           </a>
         </div>
 
-        <div id="navbarMain" className="navbar-menu">
+        <div id="navbarMain" className={`navbar-menu ${isActive}`}>
           <div className="navbar-start">
-            <Link className="navbar-item" to="/">
+            <Link className="navbar-item" to="/" onClick={activate}>
               Home
             </Link>
 
-            <Link className="navbar-item" to="apps">
+            <Link className="navbar-item" to="apps" onClick={activate}>
               Apps
             </Link>
 
-            <Link className="navbar-item" to="app-stack">
+            <Link className="navbar-item" to="app-stack" onClick={activate}>
               App Stack
             </Link>
           </div>
