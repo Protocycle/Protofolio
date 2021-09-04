@@ -18,7 +18,7 @@ export const AboutMe = (props) => {
 
         {profile &&
           <div className="column">
-            <img style={{ borderRadius: "6px" }} src={profile} />
+            <img style={{ borderRadius: "6px" }} src={profile} alt="Nassir Dajer"/>
           </div>
         }
 

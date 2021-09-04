@@ -7,5 +7,5 @@ bioRouter.use('/resume', resumeRouter);
 
 
 module.exports = {
-    bioRouter
+  bioRouter
 };

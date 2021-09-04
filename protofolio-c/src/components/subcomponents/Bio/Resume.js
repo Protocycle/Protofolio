@@ -59,7 +59,7 @@ export const Resume = (props) => {
 
                 {contact.links.github &&
                   <span className="icon-text column is-narrow" title="GitHub">
-                    <a className="links" target="_blank" href={contact.links.github}>
+                    <a className="links" target="_blank" rel="noreferrer" href={contact.links.github}>
                       <span className="icon is-medium">
                         <i className="fab fa-github fa-lg"></i>
                       </span>
@@ -193,7 +193,7 @@ export const Resume = (props) => {
                     {fl.activities &&
                       <ul className="px-6">
                         {fl.activities.map(activity => (
-                          <li className="py-1">
+                          <li className="py-1" key={activity}>
                             {activity}
                           </li>
                         ))}

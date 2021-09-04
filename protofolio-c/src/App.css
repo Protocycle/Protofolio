@@ -1,9 +1,13 @@
 @import 'bulma/css/bulma.css';
 @import '@fortawesome/fontawesome-free/css/all.css';
 
+html {
+  overflow-y: auto;
+  background-color: #8398A1;
+}
+
 body {
   min-height: 100vh;
-  background-color: #8398A1;
 }
 
 .tab-content {
@@ -11,11 +15,16 @@ body {
 }
 
 .tabs {
-  background-color: #9BAFB8;
+  background-color: #8ca2ac;
 }
 
 .tabs a {
   color: white;
+}
+
+.tabs li.is-active a {
+  color: #47d0ca;
+  border-bottom-color: #47d0ca;
 }
 
 .progress:indeterminate {
@@ -42,6 +51,42 @@ body {
 .type-fairy, .type-fairy *{color: #e4aab6}
 .type-electric, .type-electric *{color: #F8D030}
 /* END PokeRPS */
+
+
+/* START ToolCard */
+.toolcard-container {
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 510px));
+}
+
+.toolcard {
+  box-sizing: border-box;
+  border-radius: 6px;
+  padding: 4px 12px;
+
+  min-height: 280px;
+  max-height: 280px;
+  height: 280px;
+
+  position: relative;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 172px auto;
+}
+
+.toolcard-footer {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+}
+
+.maxw-1600 {
+  max-width: 1600px !important;
+}
+/* END ToolCard */
+
+
 
 .links:link {
   color: #a16a44;
