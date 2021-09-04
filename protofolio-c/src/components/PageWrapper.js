@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import logo from '../assets/images/logo.png';
+
 export const PageWrapper = (props) => {
   return (
     <div>
@@ -7,7 +9,7 @@ export const PageWrapper = (props) => {
       <nav className="navbar" role="navigation" aria-label="main navigation">
         <div className="navbar-brand">
           <Link className="navbar-item" to="/">
-            <img src="../assets/images/logo.png"/>
+            <img src={logo}/>
           </Link>
 
           <a role="button" className="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarMain">
