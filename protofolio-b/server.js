@@ -48,9 +48,9 @@ server.use('/api', apiRouter);
 
 
 
-server.get('/', (req, res) => {
+server.get('/*', (req, res) => {
     // update this path to match how you set up express to serve static and where your build is output to
-    res.send(res.sendFile(path.join(__dirname, '..', 'protofolio-c', 'build', 'index.html')));
+    res.sendFile(path.join(__dirname, '..', 'protofolio-c', 'build', 'index.html'));
   });
 
 
