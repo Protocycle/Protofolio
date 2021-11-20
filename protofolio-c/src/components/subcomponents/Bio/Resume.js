@@ -3,14 +3,34 @@ export const Resume = (props) => {
   const contact = props.resume.contact;
   const education = props.resume.education;
   const skills = props.resume.skills;
-  const headline = props.resume.headline;
+  const summary = props.resume.summary;
   const jobs = props.resume.jobs;
+  const title = props.resume.title;
+  const subtitles = props.resume.subtitles;
 
   return (
     <div className="box has-background-info-light px-6 container is-max-desktop">
+      <ul className="social-media-icons">
+        <li>
+          <a className="button is-medium is-github" target="_blank" rel="noreferrer" href={contact.links.github}>
+            <span className="icon">
+              <i className="fab fa-github fa-lg"></i>
+            </span>
+          </a>
+        </li>
+
+        <li>
+          <a className="button is-medium is-linkedin" target="_blank" rel="noreferrer" href={contact.links.linkedin}>
+            <span className="icon">
+            <svg class="svg-inline--fa fa-linkedin-in fa-w-14 fa-lg" aria-hidden="true" data-prefix="fab" data-icon="linkedin-in" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor" d="M100.3 480H7.4V180.9h92.9V480zM53.8 140.1C24.1 140.1 0 115.5 0 85.8 0 56.1 24.1 32 53.8 32c29.7 0 53.8 24.1 53.8 53.8 0 29.7-24.1 54.3-53.8 54.3zM448 480h-92.7V334.4c0-34.7-.7-79.2-48.3-79.2-48.3 0-55.7 37.7-55.7 76.7V480h-92.8V180.9h89.1v40.8h1.3c12.4-23.5 42.7-48.3 87.9-48.3 94 0 111.3 61.9 111.3 142.3V480z"></path></svg>
+            </span>
+          </a>
+        </li>
+      </ul>
+
       <br />
 
-      {(contact && skills && contact.name) &&
+      {(Object.keys(contact).length > 0 && title.length > 0) &&
         <main>
           <section title="Contact Info">
             <div className="has-text-centered">
@@ -57,234 +77,139 @@ export const Resume = (props) => {
                   </span>
                 }
 
-                {contact.links.github &&
-                  <span className="icon-text column is-narrow" title="GitHub">
-                    <a className="links" target="_blank" rel="noreferrer" href={contact.links.github}>
-                      <span className="icon is-medium">
-                        <i className="fab fa-github fa-lg"></i>
-                      </span>
-                      <label>GitHub</label>
-                    </a>
-                  </span>
-                }
+                {/* // <span className="icon-text column is-narrow" title="GitHub">
+                  //   <a target="_blank" rel="noreferrer" href={contact.links.github}>
+                  //     <span className="icon is-medium">
+                  //       <i className="fab fa-github fa-lg"></i>
+                  //     </span>
+                  //     <label>GitHub</label>
+                  //   </a>
+                  // </span> */}
               </div>
             </div>
           </section>
 
-
           <br />
 
-          {headline &&
+          {(summary && title) &&
             <section title="Summary">
-              <div className="has-text-centered">
-                <span className="icon-text">
-                  <span className="icon">
-                    <i className="fas fa-user-tie fa-lg"></i>
-                  </span>
-                  <label className="is-size-4">Summary</label>
-                </span>
-              </div>
+              <p className="has-text-centered has-text-weight-bold">
+                <label className="is-size-4 has-text-info">{title}<br /></label>
+                <label className="is-size-5">{subtitles.join(" | ")}</label>
+              </p>
+
               <p className="pt-3">
-                {headline}
+                {summary.headline}
+              </p>
+
+              <p className="pt-3 has-text-centered has-text-weight-bold">
+                {summary.general_skills.map(skill => (
+                  <label>{skill.join(" - ")}<br /></label>
+                ))}
               </p>
             </section>
           }
 
           <br />
 
-          {(education && (education.schools || education.bootcamps)) &&
-            <section title="Education">
-              <div className="has-text-centered">
+          {(skills.core.length > 0 && education) &&
+            <section title="Education &amp; Training">
+              <div className="has-text-centered has-text-info has-text-weight-bold">
                 <span className="icon-text">
                   <span className="icon">
-                    <i className="fas fa-user-graduate fa-lg"></i>
+                    <i className="fas fa-book-reader fa-lg"></i>
                   </span>
-                  <label className="is-size-4">Education</label>
+                  <label className="is-size-4">Education &amp; Training</label>
                 </span>
               </div>
-              {education.schools.map(school => (
-                school.institution && (
-                  <div title={school.institution} key={school.institution} className="pt-3">
+
+              <div className="py-2 has-text-centered">
+                {education.schools.map(school => (
+                  <div>
                     <label>
-                      <b>{[school.institution, school.date, school.location].join(" | ")}</b>
+                      <span className="has-text-weight-bold">{school.degree}</span>
+                      <span>, {school.institution}</span>
+                      <span>, {school.location}</span>
+                      <span className="is-italic">, GPA {school.gpa} ({school.distinction})</span>
                     </label>
-
-                    <ul className="px-6">
-                      <li className="py-1">
-                        {school.degree}
-                      </li>
-
-                      <li className="py-1">
-                        <i>{school.distinction}</i> {(school.distinction && school.gpa) && "-"} {school.gpa && `GPA: ${school.gpa}`}
-                      </li>
-
-                      {school.coursework &&
-                        <li className="py-1">
-                          <b>Relevant Coursework</b>
-                          <ul className="px-6">
-                            {school.coursework.map(course => (
-                              <li className="py-1" key={course}>
-                                {course}
-                              </li>
-                            ))}
-                          </ul>
-                        </li>
-                      }
-                    </ul>
                   </div>
-                )
-              ))}
+                ))}
+              </div>
 
-              {education.bootcamps.map(bootcamp => (
-                bootcamp.institution && (
-                  <div title={bootcamp.institution} key={bootcamp.institution} className="pt-3">
-                    <label>
-                      <b>{[bootcamp.institution, bootcamp.date, bootcamp.location].join(" | ")}</b>
-                    </label>
+              <div className="py-2 has-text-centered" style={{ backgroundColor: "#D1E5F9" }}>
+                <div className="has-text-weight-bold"><label>Core Knowledge</label></div>
+                <p className="has-text-weight-semibold">
+                  {skills.core.map(skill => (
+                    <span>{skill.join(", ")}<br /></span>
+                  ))}
+                </p>
+              </div>
 
-                    {(bootcamp.degree || bootcamp.coursework) &&
-                      <ul className="px-6">
-                        {bootcamp.degree &&
-                          <li className="py-1">
-                            {bootcamp.degree}
-                          </li>
-                        }
-
-                        {bootcamp.coursework &&
-                          <li className="py-1">
-                            <b>Relevant Coursework</b>
-                            <ul className="px-6">
-                              {bootcamp.coursework.map(course => (
-                                <li className="py-1" key={course}>
-                                  {course}
-                                </li>
-                              ))}
-                            </ul>
-                          </li>
-                        }
-                      </ul>
-                    }
-                  </div>
-                )
-              ))}
+              <div className="py-2 mt-1 has-text-centered" style={{ backgroundColor: "#A9A9A999" }}>
+                <div className="has-text-weight-bold">
+                  <label>Certification &amp; Badges</label>
+                </div>
+                <p className="has-text-weight-semibold">
+                  {education.certifications.map(cert => (
+                    [`${cert.institution} ${cert.degree}`]
+                  )).join(", ")}
+                </p>
+                <p className="has-text-weight-semibold">
+                  LinkedIn Skill Assessments: {education.linkedin.join(", ")}
+                </p>
+              </div>
             </section>
           }
 
           <br />
 
-          {(jobs && (jobs.freelance || jobs.employee)) &&
-            <section title="Work Experience">
-              <div className="has-text-centered">
+          {jobs.length > 0 &&
+            <section title="Professional Experience">
+              <div className="has-text-centered has-text-info has-text-weight-bold">
                 <span className="icon-text">
                   <span className="icon">
                     <i className="fas fa-briefcase fa-lg"></i>
                   </span>
-                  <label className="is-size-4">Work Experience</label>
+                  <label className="is-size-4">Professional Experience</label>
                 </span>
               </div>
 
-              {jobs.freelance.map(fl => (
-                fl.entity && (
-                  <div title={fl.entity} key={fl.entity} className="pt-3">
-                    <label>
-                      <b>{[fl.entity, fl.position, fl.date, fl.location].join(" | ")}</b>
-                    </label>
+              {jobs.map(job => (
+                <div title={job.title} key={job.title} className="pt-3 has-text-justified">
+                  <label className="has-text-weight-bold is-pulled-left">{job.title}</label>
+                  <label className="has-text-weight-bold is-pulled-right">{job.date}</label>
+                  <br />
 
-                    {fl.activities &&
-                      <ul className="px-6">
-                        {fl.activities.map(activity => (
-                          <li className="py-1" key={activity}>
-                            {activity}
-                          </li>
-                        ))}
-                      </ul>
-                    }
-                  </div>
-                )
-              ))}
-            </section>
-          }
+                  <label className="has-text-info has-text-weight-semibold">{job.companies.join(" | ")}</label>
+                  <br />
 
-          <br />
+                  {job.headline && <span className="is-italic">{job.headline}</span>}
+                  <br />
 
-          {skills.technical &&
-            <section title="Computer Skills">
-              <div className="has-text-centered">
-                <span className="icon-text">
-                  <span className="icon">
-                    <i className="fas fa-code fa-lg"></i>
-                  </span>
-                  <label className="is-size-4">Computer Skills</label>
-                </span>
-              </div>
+                  <div className="pt-1"><span>{job.description}</span></div>
 
-              <div className="columns pt-3 has-text-centered">
-                {skills.technical.languages &&
-                  <div title="Languages" className="column">
-                    <label>
-                      <b>Languages</b>
-                    </label>
-
-                    <ul>
-                      {skills.technical.languages.programming &&
-                        <li className="py-1">
-                          {skills.technical.languages.programming.join(" - ")}
-                        </li>
-                      }
-
-                      {skills.technical.languages.web &&
-                        <li className="py-1">
-                          {skills.technical.languages.web.join(" - ")}
-                        </li>
-                      }
-
-                      {skills.technical.languages.data &&
-                        <li className="py-1">
-                          {skills.technical.languages.data.join(" - ")}
-                        </li>
-                      }
-                    </ul>
-                  </div>
-                }
-
-                {skills.technical.libraries &&
-                  <div title="Frameworks" className="column">
-                    <label>
-                      <b>Frameworks/Libraries/Platforms</b>
-                    </label>
-
-                    <ul>
-                      {skills.technical.libraries.map(flp => (
-                        <li className="py-1" key={flp}>
-                          {flp}
-                        </li>
+                  {job.details && (
+                    <ul className="px-6 pt-2">
+                      {job.details.map(detail => (
+                        <li>{detail}</li>
                       ))}
                     </ul>
-                  </div>
-                }
+                  )}
 
-                {skills.technical.software &&
-                  <div title="Software" className="column">
-                    <label>
-                      <b>Software</b>
-                    </label>
-
-                    <ul>
-                      <li className="py-1">
-                        {skills.technical.software.databases.join(" - ")}
-                      </li>
-
-                      <li className="py-1">
-                        {skills.technical.software.platforms.join(" - ")}
-                      </li>
-
-                      <li className="py-1">
-                        {skills.technical.software.ides.join(" - ")}
-                      </li>
-                    </ul>
-                  </div>
-                }
-              </div>
+                  {job.timeline.length > 0 && (
+                    job.timeline.map(tl => (
+                      <ul className="px-6 pt-1">
+                        <li className="pt-1">
+                          <span className="has-text-weight-bold">{tl.position}</span>
+                          <span>&nbsp;({tl.date})</span>
+                        </li>
+                        <li>{tl.company}</li>
+                        <li className="is-italic">{tl.description}</li>
+                      </ul>
+                    ))
+                  )}
+                </div>
+              ))}
             </section>
           }
 

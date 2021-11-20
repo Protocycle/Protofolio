@@ -4,8 +4,6 @@ import axios from 'axios';
 import { AboutMe } from '../subcomponents/Bio/AboutMe';
 import { Resume } from '../subcomponents/Bio/Resume';
 
-//const baseUrl = "http://localhost:9000";
-
 export const Home = () => {
   const sections = {
     about: 0,

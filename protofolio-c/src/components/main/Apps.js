@@ -10,7 +10,7 @@ export const Apps = () => {
 
   return (
     <div className="container is-fullwidth">
-      <div className="tabs is-centered">
+      <div className="tabs is-centered is-size-5">
         <ul>
           <li className={appSelected === apps.pokerps ? "is-active" : ""}><a onClick={() => appSelection(apps.pokerps)}>PokeRPS</a></li>
         </ul>

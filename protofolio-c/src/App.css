@@ -23,8 +23,8 @@ body {
 }
 
 .tabs li.is-active a {
-  color: #47d0ca;
-  border-bottom-color: #47d0ca;
+  color: #29fff4;
+  border-bottom-color: #29fff4;
 }
 
 .progress:indeterminate {
@@ -86,16 +86,18 @@ body {
 }
 /* END ToolCard */
 
-
-
-.links:link {
-  color: #a16a44;
+.social-media-icons {
+  position: fixed;
+  right: 0%;
 }
 
-.links {
-  color: #269999;
+.is-linkedin {
+  background-color: #0E76A8;
+  color: #FFF;
 }
 
-.links:hover {
-  color: #8000ff;
+.is-github {
+  background-color: #171515;
+  color: #FFF;
 }
+

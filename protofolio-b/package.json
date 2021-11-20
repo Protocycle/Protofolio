@@ -14,9 +14,9 @@
   "main": "server.js",
   "scripts": {
     "test": "nodemon server.js;",
-		"start-linux": "NODE_ENV='production'; node server.js;",
+    "start-linux": "NODE_ENV='production'; node server.js;",
     "start-windows": "set NODE_ENV='production' && node server.js"
-	},
+  },
   "author": "Nassir Dajer",
   "license": "ISC"
 }

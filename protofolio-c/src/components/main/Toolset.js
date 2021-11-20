@@ -3,6 +3,8 @@ import React, { useEffect, useState } from 'react';
 import { ToolCard } from '../subcomponents/Toolset/ToolCard';
 export const Toolset = () => {
 
+  const baseUrl = "http://localhost:8080";
+
   const [toolset, setToolset] = useState();
   const loadToolset = async () => {
     let toolsetData;
@@ -10,7 +12,7 @@ export const Toolset = () => {
       toolsetData = JSON.parse(sessionStorage.getItem("toolsetData"));
 
     else {
-      toolsetData = (await axios.get(`/api/toolset/1`)).data;
+      toolsetData = (await axios.get(`${baseUrl}/api/toolset/1`)).data;
       sessionStorage.setItem("toolsetData", JSON.stringify(toolsetData));
     }
     setToolset(toolsetData);
