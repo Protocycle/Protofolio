@@ -33,9 +33,7 @@ export const Toolset = () => {
 
         <div className="toolcard-container">
           {toolset && toolset.frameworks.map(fw => (
-            <div key={fw.name}>
-              <ToolCard tools={fw} />
-            </div>
+            <ToolCard key={fw.name} tools={fw} />
           ))}
         </div>
       </section>
@@ -47,9 +45,7 @@ export const Toolset = () => {
 
         <div className="toolcard-container">
           {toolset && toolset.libraries.map(lb => (
-            <div key={lb.name}>
-              <ToolCard tools={lb} />
-            </div>
+            <ToolCard key={lb.name} tools={lb} />
           ))}
         </div>
       </section>
@@ -61,9 +57,7 @@ export const Toolset = () => {
 
         <div className="toolcard-container">
           {toolset && toolset.databases.map(db => (
-            <div key={db.name}>
-              <ToolCard tools={db} />
-            </div>
+            <ToolCard key={db.name} tools={db} />
           ))}
         </div>
       </section>
@@ -75,9 +69,7 @@ export const Toolset = () => {
 
         <div className="toolcard-container">
           {toolset && toolset.apis.map(api => (
-            <div key={api.name}>
-              <ToolCard tools={api} />
-            </div>
+            <ToolCard key={api.name} tools={api} />
           ))}
         </div>
       </section>
