@@ -9,18 +9,16 @@ export const Apps = () => {
   const [appSelected, appSelection] = useState(apps.pokerps)
 
   return (
-    <div className="container is-fullwidth">
+    <section id="Apps" className="container is-fullhd">
       <div className="tabs is-centered is-size-5">
         <ul>
-          <li className={appSelected === apps.pokerps ? "is-active" : ""}><a onClick={() => appSelection(apps.pokerps)}>PokeRPS</a></li>
+          <li className={"border-bottom" + (appSelected === apps.pokerps ? " border-red text-red" : " border-silver text-white")}><a onClick={() => appSelection(apps.pokerps)}>PokeRPS</a></li>
         </ul>
       </div>
-      
-      <div className="tab-content box has-text-black">
-        {
-          appSelected
-        }
-      </div>
-    </div>
+
+      {
+        appSelected
+      }
+    </section>
   )
 }

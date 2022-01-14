@@ -3,28 +3,59 @@
 
 html {
   overflow-y: auto;
-  background-color: #8398A1;
+  background-color: #3d4044;
 }
 
 body {
   min-height: 100vh;
 }
 
-.tab-content {
-  background-color: #607780;
+.label {
+  color: unset;
 }
 
-.tabs {
-  background-color: transparent;
+.button {
+  color:hsl(0, 0%, 85%);
+}
+
+.button:hover {
+  color: #f14668;
+}
+
+.button:focus {
+  color: #f14668;
+}
+
+.navbar {
+  box-shadow: 0 8px 16px rgba(135, 135, 135, 0.18);
+}
+
+.navbar-menu {
+  box-shadow: unset;
+  background-color: transparent !important;
+}
+
+.navbar-burger:hover {
+  color: #f14668;
+}
+
+.navbar-burger.is-active {
+  color: #f14668;
+}
+
+a {
+  color: unset;
 }
 
 .tabs a {
-  color: white;
+  border: none;
+  border-color: unset;
+  color: unset;
 }
 
-.tabs li.is-active a {
-  color: #29fff4;
-  border-bottom-color: #29fff4;
+.tabs a:hover {
+  border-color: #f14668;
+  color: #f14668;
 }
 
 .progress:indeterminate {
@@ -46,7 +77,7 @@ body {
 .type-rock, .type-rock *{color: #B8A038}
 .type-ghost, .type-ghost *{color: #664a92}
 .type-dragon, .type-dragon *{color: #692ef1}
-.type-dark, .type-dark *{color: #705848}
+.type-dark, .type-dark *{color: #755d4c}
 .type-steel, .type-steel *{color: #c7c7ce}
 .type-fairy, .type-fairy *{color: #e4aab6}
 .type-electric, .type-electric *{color: #F8D030}
@@ -73,6 +104,8 @@ body {
   background-repeat: no-repeat;
   background-position: center center;
   background-size: 172px auto;
+  background-color: #2d3034;
+  box-shadow: -1px 1px 20px -14px #000;
 }
 
 .toolcard-footer {
@@ -101,3 +134,92 @@ body {
   color: #FFF;
 }
 
+/* START Colors, Border, & Background */
+.background-main {
+  background-color: transparent;
+}
+
+.background-resume {
+  background-color: hsl(214, 7%, 19%);
+}
+
+.background-know {
+  background-color: rgba(10, 77, 142, 0.6);
+}
+
+.background-certs {
+  background-color: rgba(151, 72, 72, 0.6);
+}
+
+.background-transparent {
+  background-color: transparent;
+}
+
+.border-top {
+  border-top: 1px solid;
+}
+
+.border-right {
+  border-right: 1px solid;
+}
+
+.border-bottom {
+  border-bottom: 1px solid;
+}
+
+.border-left {
+  border-left: 1px solid;
+}
+
+.border-white {
+  border-color: white;
+}
+
+.border-silver {
+  border-color: silver;
+}
+
+.border-red {
+  border-color: #f14668;
+}
+
+.border-radius-2 {
+  border-radius: 2px;
+}
+
+.border-radius-4 {
+  border-radius: 4px;
+}
+
+.border-radius-6 {
+  border-radius: 6px;
+}
+
+.navbar-menu .navbar-item {
+  border: 1px solid transparent;
+}
+
+.navbar-menu .navbar-item:hover, .navbar-menu .navbar-item:focus {
+  background-color: transparent !important;
+  border-color: silver;
+  color: #f14668;
+}
+
+.navbar-menu .navbar-item.active {
+  border-color: silver;
+  color: #f14668;
+}
+
+.text-white {
+  color: hsl(0, 0%, 85%);
+}
+
+.input::placeholder {
+  color: gray;
+  opacity: 1; /* Firefox */
+}
+
+.text-red {
+  color: #f14668;
+}
+/* END Colors, Border, & Background */

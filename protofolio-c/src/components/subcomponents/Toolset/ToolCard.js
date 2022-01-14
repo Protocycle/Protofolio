@@ -6,7 +6,7 @@ export const ToolCard = (props) => {
   console.log(logo);
 
   return (
-    <div className="toolcard has-background-dark" style={{backgroundImage:`url(${logo})`}}>
+    <div className="toolcard" style={{backgroundImage:`url(${logo})`}}>
       <div className="toolcard-header">
         <div className="columns is-vcentered is-flex">
           <div className="column"><label className="is-size-4">{name}</label></div>
@@ -28,7 +28,7 @@ export const ToolCard = (props) => {
       </div>
 
       <div className="toolcard-footer">
-        <a className="button has-background-dark has-text-white" href={site} target="_blank" rel="noreferrer">Visit {name}</a>
+        <a className="button background-transparent" href={site} target="_blank" rel="noreferrer">Visit {name}</a>
       </div>
     </div>
   );
