@@ -24,7 +24,7 @@ export const Toolset = () => {
 
 
   return (
-    <div className="container has-text-white maxw-1600 is-flex-touch is-flex-direction-column is-align-items-center px-4">
+    <section id="App-Stack" className="container text-white maxw-1600 is-flex-touch is-flex-direction-column is-align-items-center px-4">
       {/* CONVERT TO CAROUSEL */}
       <section title="Frameworks" className="mt-4">
         <div className="mb-2">
@@ -73,6 +73,6 @@ export const Toolset = () => {
           ))}
         </div>
       </section>
-    </div>
+    </section>
   )
 }

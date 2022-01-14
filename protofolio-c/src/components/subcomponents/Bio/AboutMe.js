@@ -13,47 +13,45 @@ export const AboutMe = (props) => {
   // }
 
   return (
-    <div className="box has-background-info-light">
-      <div className="columns">
+    <div className="columns text-white">
 
-        {profile &&
-          <div className="column">
-            <img style={{ borderRadius: "6px" }} src={profile} alt="Nassir Dajer"/>
+      {profile &&
+        <div className="column">
+          <img style={{ borderRadius: "6px" }} src={profile} alt="Nassir Dajer" />
+        </div>
+      }
+
+      <div className="column has-text-justified is-three-fifths">
+        {(intro && content && conclusion) &&
+          <div className="about-container is-size-5">
+            <div className="about-intro">
+              <p>
+                {intro.map((p) => (
+                  <span key={p[0]}>{p[1]} <br /></span>
+                ))}
+              </p>
+            </div>
+
+            <br />
+
+            <div className="about-content">
+              <p>
+                {content.map((p) => (
+                  <span key={p[0]}>{p[1]} <br /><br /></span>
+                ))}
+              </p>
+
+            </div>
+
+            <div className="about-conclusion">
+              <p>
+                {conclusion.map((p) => (
+                  <span key={p[0]}>{p[1]} <br /><br /></span>
+                ))}
+              </p>
+            </div>
           </div>
         }
-
-        <div className="column has-text-justified is-three-fifths">
-          {(intro && content && conclusion) &&
-            <div className="about-container">
-              <div className="about-intro">
-                <p>
-                  {intro.map((p) => (
-                    <span key={p[0]}>{p[1]} <br /></span>
-                  ))}
-                </p>
-              </div>
-
-              <br />
-
-              <div className="about-content">
-                <p>
-                  {content.map((p) => (
-                    <span key={p[0]}>{p[1]} <br /><br /></span>
-                  ))}
-                </p>
-
-              </div>
-
-              <div className="about-conclusion">
-                <p>
-                  {conclusion.map((p) => (
-                    <span key={p[0]}>{p[1]} <br /><br /></span>
-                  ))}
-                </p>
-              </div>
-            </div>
-          }
-        </div>
       </div>
     </div>
   )

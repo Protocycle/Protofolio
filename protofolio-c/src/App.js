@@ -1,21 +1,23 @@
 import './App.css';
 import { Home } from './components/main/Home';
-import { Navbar } from './components/Navbar';
+import { Wrapper } from './components/Wrapper';
 import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-dom';
 import { Apps } from './components/main/Apps';
 import { Toolset } from './components/main/Toolset';
+import { About } from './components/main/About';
 
 function App() {
   return (
     <Router>
-      <Navbar>
+      <Wrapper>
         <Switch>
-          <Route exact path="/" component={Home} />
+          <Route exact path="/home" component={Home} />
+          <Route exact path="/about" component={About} />
           <Route exact path="/apps" component={Apps} />
           <Route exact path="/app-stack" component={Toolset} />
-          <Redirect to="/" />
+          <Redirect to="/home" />
         </Switch>
-      </Navbar>
+      </Wrapper>
     </Router>
   );
 }

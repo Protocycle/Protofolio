@@ -28,7 +28,7 @@ export const ToolCard = (props) => {
       </div>
 
       <div className="toolcard-footer">
-        <a className="button has-background-dark has-text-white" href={site} target="_blank" rel="noreferrer">Visit {name}</a>
+        <a className="button background-transparent" href={site} target="_blank" rel="noreferrer">Visit {name}</a>
       </div>
     </div>
   );

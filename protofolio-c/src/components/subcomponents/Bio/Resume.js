@@ -35,9 +35,7 @@ export const Resume = (props) => {
           <section title="Contact Info">
             <div className="has-text-centered">
               {contact.name &&
-                <div>
-                  <label className="is-size-2">{contact.name}</label>
-                </div>
+                <label className="is-size-2">{contact.name}</label>
               }
 
               <div className="columns is-centered">

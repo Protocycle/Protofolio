@@ -22,7 +22,7 @@ export const PokeRPS = () => {
   const [fontColor2, setFontColor2] = useState("");
 
   const [info, setInfo] = useState("Winner will be shown here");
-  const [winnerFontColor, setWinnerFontColor] = useState("has-text-info-light");
+  const [winnerFontColor, setWinnerFontColor] = useState("text-white");
   const [loading, isLoading] = useState(false);
 
   const getPokemon = async (id1, id2) => {
@@ -85,7 +85,7 @@ export const PokeRPS = () => {
   }
 
   return (
-    <div className="has-text-centered">
+    <div className="has-text-centered text-white">
       <div className="columns is-centered">
         <div className="column">
           <label className="label is-size-4">Player 1</label>
@@ -104,7 +104,7 @@ export const PokeRPS = () => {
 
           <div className="pt-4 columns">
             <div className="column is-two-thirds">
-              <input className="input is-primary"
+              <input className="input background-transparent text-white"
                 type="text"
                 placeholder="Pokemon ID # (e.g. 1, 333, 740...)"
                 onChange={e => setId1(e.currentTarget.value.replace(/\s*[a-zA-Z]*/g, ""))}
@@ -113,7 +113,7 @@ export const PokeRPS = () => {
             </div>
 
             <div className="column is-one-fifth">
-              <button className="button" onClick={() => setId1("" + randomize())}>Randomize</button>
+              <button className="button background-transparent" onClick={() => setId1("" + randomize())}>Randomize</button>
             </div>
           </div>
         </div>
@@ -124,7 +124,7 @@ export const PokeRPS = () => {
           </div>
 
           <div className="is-flex is-align-items-flex-end is-justify-content-center" style={{ height: "50%" }}>
-            <button className="button" onClick={() => RPS()}>RPS!</button>
+            <button className="button background-transparent" onClick={() => RPS()}>RPS!</button>
           </div>
         </div>
 
@@ -145,7 +145,7 @@ export const PokeRPS = () => {
 
           <div className="pt-4 columns">
             <div className="column is-two-thirds">
-              <input className="input is-primary"
+              <input className="input background-transparent text-white"
                 type="text"
                 placeholder="Pokemon ID # (e.g. 1, 333, 740...)"
                 onChange={e => setId2(e.currentTarget.value.replace(/\s*[a-zA-Z]*/g, ""))}
@@ -154,7 +154,7 @@ export const PokeRPS = () => {
             </div>
 
             <div className="column is-one-fifth">
-              <button className="button" onClick={() => setId2("" + randomize())}>Randomize</button>
+              <button className="button background-transparent" onClick={() => setId2("" + randomize())}>Randomize</button>
             </div>
           </div>
         </div>
