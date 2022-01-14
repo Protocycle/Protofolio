@@ -60,13 +60,11 @@ export const About = () => {
         </ul>
       </div>
 
-      <div className="container background-transparent">
-        {
-          tabSelected === sections.about ?
-            about && <AboutMe about={about} /> :
-            resume && <Resume resume={resume} />
-        }
-      </div>
+      {
+        tabSelected === sections.about ?
+          about && <AboutMe about={about} /> :
+          resume && <Resume resume={resume} />
+      }
     </section>
   );
 }

@@ -34,7 +34,7 @@ export const Wrapper = (props) => {
   }
 
   return (
-    <section id="main" className="hero background-image is-fullheight">
+    <section id="main" className="hero background-main is-fullheight">
       <div className="hero-head">
         <nav className="navbar" role="navigation" aria-label="main navigation">
           <div className="navbar-brand">
@@ -42,7 +42,7 @@ export const Wrapper = (props) => {
               <img src={logo} />
             </Link>
 
-            <a role="button" onClick={activateHamburger} className={`navbar-burger ${hamburgerIsActive}`} aria-label="menu" aria-expanded="false" data-target="navbarMain">
+            <a role="button" onClick={activateHamburger} className={`navbar-burger ${hamburgerIsActive} text-white`} aria-label="menu" aria-expanded="false" data-target="navbarMain">
               <span aria-hidden="true"></span>
               <span aria-hidden="true"></span>
               <span aria-hidden="true"></span>

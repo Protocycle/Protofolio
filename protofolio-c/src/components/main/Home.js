@@ -7,7 +7,7 @@ export const Home = () => {
         Hi! I'm <span className="has-text-danger">Nassir Dajer</span>
       </p>
       <p className="subtitle is-size-4 has-text-white-ter">
-        A Full-Stack Software Engineer
+        Software Developer
       </p>
     </section>
   );

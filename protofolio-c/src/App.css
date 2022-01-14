@@ -3,7 +3,7 @@
 
 html {
   overflow-y: auto;
-  background-color: #dcf5ff;
+  background-color: #3d4044;
 }
 
 body {
@@ -19,20 +19,28 @@ body {
 }
 
 .button:hover {
-  color: hsl(0, 0%, 100%);
+  color: #f14668;
 }
 
 .button:focus {
-  color: hsl(0, 0%, 100%);
+  color: #f14668;
 }
 
 .navbar {
-  box-shadow: 0 8px 16px hsla(0, 1.2%, 31.4%, 0.18);
+  box-shadow: 0 8px 16px rgba(135, 135, 135, 0.18);
 }
 
 .navbar-menu {
   box-shadow: unset;
   background-color: transparent !important;
+}
+
+.navbar-burger:hover {
+  color: #f14668;
+}
+
+.navbar-burger.is-active {
+  color: #f14668;
 }
 
 a {
@@ -96,6 +104,8 @@ a {
   background-repeat: no-repeat;
   background-position: center center;
   background-size: 172px auto;
+  background-color: #2d3034;
+  box-shadow: -1px 1px 20px -14px #000;
 }
 
 .toolcard-footer {
@@ -125,12 +135,24 @@ a {
 }
 
 /* START Colors, Border, & Background */
-.background-image {
-  background: #121212;
+.background-main {
+  background-color: transparent;
+}
+
+.background-resume {
+  background-color: hsl(214, 7%, 19%);
+}
+
+.background-know {
+  background-color: rgba(10, 77, 142, 0.6);
+}
+
+.background-certs {
+  background-color: rgba(151, 72, 72, 0.6);
 }
 
 .background-transparent {
-  background: transparent;
+  background-color: transparent;
 }
 
 .border-top {
@@ -178,7 +200,7 @@ a {
 }
 
 .navbar-menu .navbar-item:hover, .navbar-menu .navbar-item:focus {
-  background: none !important;
+  background-color: transparent !important;
   border-color: silver;
   color: #f14668;
 }
