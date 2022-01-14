@@ -44,6 +44,7 @@ Thumbs.db
 .env.test.local
 .env.production.local
 tokn.txt
+*_old.jpg
 
 # Dependencies
 node_modules
