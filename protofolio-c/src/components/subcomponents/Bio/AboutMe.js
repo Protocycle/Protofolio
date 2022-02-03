@@ -31,7 +31,7 @@ export const AboutMe = (props) => {
       {about &&
         <div className="columns text-white">
           <div className="column">
-            <img style={{ borderRadius: "6px" }} src={about.summary.profile} alt="Nassir Dajer" />
+            <img style={{ borderRadius: "6px" }} src={about.pp} alt="Nassir Dajer" />
           </div>
 
           <div className="column has-text-justified is-three-fifths">
