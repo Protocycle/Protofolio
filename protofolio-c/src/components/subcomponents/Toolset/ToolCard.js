@@ -1,10 +1,8 @@
 import React from 'react';
 
 export const ToolCard = (props) => {
-  const { name, purpose, language, type, location, site, logo } = props.tools;
-
-  console.log(logo);
-
+  const { name, purpose, language, location, site, logo } = props.tools;
+  
   return (
     <div className="toolcard" style={{backgroundImage:`url(${logo})`}}>
       <div className="toolcard-header">

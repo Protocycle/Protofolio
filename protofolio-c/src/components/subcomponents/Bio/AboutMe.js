@@ -1,60 +1,73 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 
 export const AboutMe = (props) => {
-  const intro = [...props.about.summary.intro].sort((line1, line2) => line1[0] > line2[0]);
-  const content = [...props.about.summary.content].sort((line1, line2) => line1[0] > line2[0]);
-  const conclusion = [...props.about.summary.conclusion].sort((line1, line2) => line1[0] > line2[0]);
-  const profile = props.about.pp;
-  // const person = {
-  //   name: props.about.name,
-  //   dob: props.about.dob,
-  //   pob: props.about.pob,
-  //   nationality: props.about.nationality
-  // }
+  const [about, setAbout] = useState(null);
+  const {url} = props;
+
+  const loadAbout = async () => {
+    let aboutData = sessionStorage.getItem("aboutData");
+    if (aboutData)
+      aboutData = JSON.parse(sessionStorage.getItem("aboutData"));
+
+    else {
+      aboutData = (await axios.get(`${url}/api/bio/about/1`)).data;
+      if (aboutData)
+        sessionStorage.setItem("aboutData", JSON.stringify(aboutData));
+    }
+
+    if (aboutData) {
+      Object.values(aboutData.summary).forEach((val) => val.sort((line1, line2) => line1[0] > line2[0]));
+      setAbout(aboutData);
+    }
+  };
+
+  useEffect(() => {
+    loadAbout();
+  }, [])
 
   return (
     <div className="box background-transparent">
-      <div className="columns text-white">
-
-        {profile &&
+      {about &&
+        <div className="columns text-white">
           <div className="column">
-            <img style={{ borderRadius: "6px" }} src={profile} alt="Nassir Dajer" />
+            <img style={{ borderRadius: "6px" }} src={about.summary.profile} alt="Nassir Dajer" />
           </div>
-        }
 
-        <div className="column has-text-justified is-three-fifths">
-          {(intro && content && conclusion) &&
-            <div className="about-container is-size-5">
-              <div className="about-intro">
-                <p>
-                  {intro.map((p) => (
-                    <span key={p[0]}>{p[1]} <br /></span>
-                  ))}
-                </p>
+          <div className="column has-text-justified is-three-fifths">
+            {(about.summary.intro && about.summary.content && about.summary.conclusion) &&
+              <div className="about-container is-size-5">
+                <div className="about-intro">
+                  <p>
+                    {about.summary.intro.map((p) => (
+                      <span key={p[0]}>{p[1]} <br /></span>
+                    ))}
+                  </p>
+                </div>
+
+                <br />
+
+                <div className="about-content">
+                  <p>
+                    {about.summary.content.map((p) => (
+                      <span key={p[0]}>{p[1]} <br /><br /></span>
+                    ))}
+                  </p>
+
+                </div>
+
+                <div className="about-conclusion">
+                  <p>
+                    {about.summary.conclusion.map((p) => (
+                      <span key={p[0]}>{p[1]} <br /><br /></span>
+                    ))}
+                  </p>
+                </div>
               </div>
-
-              <br />
-
-              <div className="about-content">
-                <p>
-                  {content.map((p) => (
-                    <span key={p[0]}>{p[1]} <br /><br /></span>
-                  ))}
-                </p>
-
-              </div>
-
-              <div className="about-conclusion">
-                <p>
-                  {conclusion.map((p) => (
-                    <span key={p[0]}>{p[1]} <br /><br /></span>
-                  ))}
-                </p>
-              </div>
-            </div>
-          }
+            }
+          </div>
         </div>
-      </div>
-    </div>
+      }
+   </div>
   )
 }

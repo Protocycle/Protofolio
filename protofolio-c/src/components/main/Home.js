@@ -2,7 +2,7 @@ import React from 'react';
 
 export const Home = () => {
   return (
-    <section id="Home" className="container has-text-centered">
+    <section id="home" className="container has-text-centered">
       <p className="title is-size-1 has-text-white-ter">
         Hi! I'm <span className="has-text-danger">Nassir Dajer</span>
       </p>

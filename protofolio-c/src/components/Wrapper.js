@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../assets/images/logo.png';
 
@@ -34,7 +34,7 @@ export const Wrapper = (props) => {
   }
 
   return (
-    <section id="main" className="hero background-main is-fullheight">
+    <section id="main" className="hero is-fullheight background-main">
       <div className="hero-head">
         <nav className="navbar" role="navigation" aria-label="main navigation">
           <div className="navbar-brand">

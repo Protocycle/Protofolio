@@ -6,10 +6,6 @@ html {
   background-color: #3d4044;
 }
 
-body {
-  min-height: 100vh;
-}
-
 .label {
   color: unset;
 }

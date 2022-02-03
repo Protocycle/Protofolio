@@ -1,70 +1,40 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 
 import { AboutMe } from '../subcomponents/Bio/AboutMe';
 import { Resume } from '../subcomponents/Bio/Resume';
 
+const url = "http://nassirdajer.xyz"
+
 export const About = () => {
   const sections = {
-    about: 0,
-    resume: 1,
+    about: {
+      id: "About",
+      scene: AboutMe
+    },
+    resume: {
+      id: "Resume",
+      scene: Resume
+    }
   };
-  const [tabSelected, tabSelection] = useState(sections.about);
-  const [about, setAbout] = useState();
-  const [resume, setResume] = useState();
-
-  const loadAbout = async () => {
-    let aboutData;
-    if (sessionStorage.getItem("aboutData"))
-      aboutData = JSON.parse(sessionStorage.getItem("aboutData"));
-
-    else {
-      aboutData = (await axios.get(`/api/bio/about/1`)).data;
-      sessionStorage.setItem("aboutData", JSON.stringify(aboutData));
-    }
-    setAbout(aboutData);
-  };
-
-  const loadResume = async () => {
-    let resumeData;
-    if (sessionStorage.getItem("resumeData")) {
-      resumeData = JSON.parse(sessionStorage.getItem("resumeData"));
-    }
-
-    else {
-      resumeData = (await axios.get(`/api/bio/resume/1`)).data;
-      sessionStorage.setItem("resumeData", JSON.stringify(resumeData));
-    }
-
-    setResume(resumeData);
-  }
+  const [view, setView] = useState(sections.about);
 
 
-  // get about and resume data from database
-  useEffect(() => {
-    loadAbout();
-    loadResume();
-  }, []);
 
   return (
-    <section id="About" className="container is-fullhd">
+    <section id="about" className="container is-fullhd is-align-self-flex-start">
       <div className="tabs is-centered is-size-5">
         <ul>
-          <li className={"border-bottom" + (tabSelected === sections.about ? " border-red text-red" : " border-silver text-white")}>
-            <a onClick={() => tabSelection(sections.about)}>About</a>
-          </li>
-
-          <li className={"border-bottom" + (tabSelected === sections.resume ? " border-red text-red" : " border-silver text-white")}>
-            <a onClick={() => tabSelection(sections.resume)}>Resume</a>
-          </li>
+          {Object.values(sections).map(section => (
+            <li key={section.id} className={"border-bottom" + (view.id === section.id ? " border-red text-red" : " border-silver text-white")}>
+              <a onClick={() => setView(section)}>{section.id}</a>
+            </li>
+          ))}
         </ul>
       </div>
 
-      {
-        tabSelected === sections.about ?
-          about && <AboutMe about={about} /> :
-          resume && <Resume resume={resume} />
-      }
+      <div className="is-align-self-center">
+        {<view.scene url={url}/>}
+      </div>
     </section>
   );
 }
