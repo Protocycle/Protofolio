@@ -43,8 +43,9 @@ const toolsetSchema = new Schema({
 
 const toolset = mongoose.model('Toolset', toolsetSchema);
 
-const getToolsetById = (id, cb) => {
-  toolset.findOne({ id: id }, cb);
+const getToolsetById = async (id) => {
+  data = await toolset.findOne({ id: id });
+	return data;
 };
 
 module.exports = {

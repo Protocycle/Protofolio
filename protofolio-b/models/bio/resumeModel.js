@@ -50,8 +50,9 @@ const resumeSchema = new Schema({
 
 const resume = mongoose.model('Resume', resumeSchema);
 
-const getResumeById = (id, cb) => {
-  resume.findOne({ id: id }, cb);
+const getResumeById = async (id) => {
+  data = await resume.findOne({ id: id });
+	return data;
 };
 
 module.exports = {

@@ -1,19 +1,21 @@
 const aboutRouter = require('express').Router();
 const aboutModel = require('../../models/bio/aboutModel');
 
-aboutRouter.get('/:id', (req, res) => {
+aboutRouter.get('/:id', async (req, res) => {
   const id = req.params.id;
   if (id) {
-    aboutModel.getAboutById(id, (err, data) => {
-      if (err) {
-        console.log("error:", err);
+    const data = await aboutModel.getAboutById(id);
+    
+		if (data)
+			res.send(data);
+		
+		else {
+        console.log("error at about.js when fetching from db");
         res.sendStatus(404);
         return;
-      }
-      res.send(data);
-    })
-  }
-});
+    }
+	}
+ });
 
 
 

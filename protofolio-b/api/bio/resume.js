@@ -1,17 +1,17 @@
 const resumeRouter = require('express').Router();
 const resumeModel = require('../../models/bio/resumeModel');
 
-resumeRouter.get('/:id', (req, res) => {
+resumeRouter.get('/:id', async (req, res) => {
   const id = req.params.id;
   if (id) {
-    resumeModel.getResumeById(id, (err, data) => {
-      if (err) {
-        console.log("error:", err);
-        res.sendStatus(404);
-        return;
-      }
-      res.send(data);
-    })
+    const data = await resumeModel.getResumeById(id);
+    if (data)
+			res.send(data);
+
+		else {
+      console.log("error at resume.js");
+      res.sendStatus(404);
+    }
   }
 });
 

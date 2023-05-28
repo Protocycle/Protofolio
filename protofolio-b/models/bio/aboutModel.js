@@ -17,9 +17,16 @@ const aboutSchema = new Schema({
 
 const about = mongoose.model('About', aboutSchema);
 
-const getAboutById = (id, cb) => {
-  about.findOne({ id: id }, cb);
-};
+const getAboutById = async (id) => {
+	try {
+  	const data = await about.findOne({ id: id });
+		return data;
+	}
+	
+	catch (err) {
+		console.log(err);
+	}
+}
 
 module.exports = {
   getAboutById
